@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./styles.css"
 
-function App() {
-  const [count, setCount] = useState(0)
+// Ok the component is done now you need to break it make use of useState and make functions
 
+const App = () => {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <form className="new-item-form">
+        <div className="form-row">
+          <label htmlFor="item">New Item</label>
+          <input type="text" name="item" id="item" />
+        </div>
+        <button type="submit" className="btn">
+          Add
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      </form>
+      <h1 className="header">Todos list</h1>
+      <ul className="list">
+        <li>
+          <label htmlFor="a">
+            <input type="checkbox" name="a" id="a" />
+            Do laundry
+          </label>
+          <button className="btn btn-danger">Delete</button>
+        </li>
+        <li>
+          <input type="checkbox" name="b" id="b" />
+          <label htmlFor="b">asdasdas</label>
+          <button className="btn btn-danger">Delete</button>
+        </li>
+      </ul>
     </>
   )
 }
-
 export default App
