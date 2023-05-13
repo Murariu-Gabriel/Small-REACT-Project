@@ -21,3 +21,41 @@
 - Components start with a capital letter
 
 - You can only return one element in a component and you can you a fragment <></> so you don't add unnecessary elements
+
+
+## Use State
+
+- Will rerender each time it gets updated
+
+## Event listeners 
+
+- Here we have an event listener onChange in which we invoke a callback function with the event and we update the state with the event value. We also have a value
+attribute in which we pass the state value that we update. So what we basically do is to take the value we write in the input and pass it into it's value 
+```JS
+const App = () => {
+  const [newItem, setNewItem] = useState("")
+
+
+  return (
+    <>
+      <form className="new-item-form">
+        <div className="form-row">
+          <label htmlFor="item">New Item</label>
+          <input
+            value={newItem}
+            onChange={(e) => setNewItem(e.target.value)}
+            type="text"
+            name="item"
+            id="item"
+          />
+        </div>
+        <button type="submit" className="btn">
+          Add
+        </button>
+      </form>
+      <h1 className="header">Todos list</h1>
+      <ul className="list">{<ListItem />}</ul>
+    </>
+  )
+}
+```
