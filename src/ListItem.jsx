@@ -1,6 +1,6 @@
-function ListItem({el}) {
+function ListItem({el, id}) {
   return (
-    <li>
+    <li key={id}>
       <label htmlFor="a">
         <input type="checkbox" name="a" id="a" />
         {el}
