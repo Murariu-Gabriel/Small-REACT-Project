@@ -1,25 +1,23 @@
 import { useState } from "react"
+import NewTodoForm from "./NewTodoForm"
 // import ListItem from "./ListItem"
 import "./styles.css"
+import TodoList from "./TodoList"
 
-// Ok the component is done now you need to break it make use of useState and make functions
-
-const App = () => {
-  const [newItem, setNewItem] = useState("")
+const App = () => { 
   const [todos, setToDos] = useState([])
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
 
-    setToDos((currentTodos) => {
+
+  const addTodos = (title) =>{
+        setToDos((currentTodos) => {
       return [
         ...currentTodos,
-        { id: crypto.randomUUID(), title: newItem, completed: false },
+        { id: crypto.randomUUID(), title, completed: false },
       ]
     })
-    setNewItem("")
   }
- 
+
   const toggleTodo = (id, completed) => {
     setToDos(currentTodos => {
       return currentTodos.map(todo => {
@@ -32,42 +30,38 @@ const App = () => {
     })
   }
 
+  const deleteTodo = (id) => {
+    setToDos(currentTodos => {
+      return currentTodos.filter((todo) => todo.id !== id)
+    })
+  }
+
   return (
     <>
-      <form className="new-item-form" onSubmit={handleSubmit}>
-        <div className="form-row">
-          <label htmlFor="item">New Item</label>
-          <input
-            value={newItem}
-            onChange={(e) => setNewItem(e.target.value)}
-            type="text"
-            name="item"
-            id="item"
-          />
-        </div>
-        <button type="submit" className="btn">
-          Add
-        </button>
-      </form>
+      <NewTodoForm addTodos={addTodos} />
       <h1 className="header">Todos list</h1>
-      <ul className="list">
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
+      {/* <ul className="list">
+        {todos.length === 0 && "- no todos" }
         {todos.map((todo) => {
            const {id, title, completed} = todo
           return (
             <li key={id}>
-              <label >
+              <label>
                 <input
                   type="checkbox"
                   checked={completed}
-                  onChange={e =>toggleTodo(id, e.target.checked)}
+                  onChange={(e) => toggleTodo(id, e.target.checked)}
                 />
                 {title}
               </label>
-              <button className="btn btn-danger">Delete</button>
+              <button className="btn btn-danger" onClick={() => deleteTodo(id)}>
+                Delete
+              </button>
             </li>
           )
         })}
-      </ul>
+      </ul> */}
     </>
   )
 }

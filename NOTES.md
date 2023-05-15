@@ -103,3 +103,66 @@ const handleSubmit = (e) => {
   })}
 </ul>
 ```
+
+- Then there is this function that takes to parameters, the id of the list element and the check status and what it does is that it updates individually the checkboxes on click and it does that by checking if the id of the list element matches the id that is passed in the function
+
+```js
+
+  const toggleTodo = (id, completed) => {
+    setToDos(currentTodos => {
+      return currentTodos.map(todo => {
+        if(todo.id === id){
+          return {...todo, completed}
+        }
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
