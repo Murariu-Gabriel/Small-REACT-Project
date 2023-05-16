@@ -115,10 +115,28 @@ const handleSubmit = (e) => {
           return {...todo, completed}
         }
 
-
 ```
 
+## Using useEffect hook to update local storage
 
+- useEffect hook is a hook that allows us to control the rendering of our code.
+- It takes a callback function and after it a dependency array which controls rendering. If the array is empty the functionality inside the useEffect hook is going to render only on initial render that meaning when the page loads for the first time.
+
+- In the example bellow we update local storage with the use of useEffect. Every time todos gets updated useEffect will store/update the local storage with the items from todos
+
+```JS
+ const [todos, setToDos] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS")
+    if (localValue === null) return []
+    
+    return JSON.parse(localValue)
+  })
+
+  useEffect(() => {
+    localStorage.setItem("ITEMS", JSON.stringify(todos))
+  },[todos])
+
+```
 
 
 
