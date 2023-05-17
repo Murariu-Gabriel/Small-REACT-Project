@@ -8,7 +8,7 @@
 
 - Open your folder in VScode and type npm create vite@latest in console
 
-- Then enter a . (dot) this will create the app i the current folder
+- Then enter a . (dot) this will create the app in the current folder
 
 - Then choose JavaScript or Javascript + SWC, the second one should make it faster if it doesn't work the first should be fine
 
